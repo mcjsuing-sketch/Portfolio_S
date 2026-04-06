@@ -15,6 +15,11 @@ body {
     background-image: radial-gradient(circle at top center, rgba(255, 215, 0, 0.3), transparent 140%),
                       radial-gradient(circle at 30% 80%, rgba(255, 232, 137, 0.15), transparent 50%);
     transition: background-color 0.3s ease, color 0.3s ease;
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><defs><filter id="glow"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="%23ffd700" flood-opacity="0.85"/></filter></defs><polygon points="16,2 20,12 30,12 22,18 24,28 16,22 8,28 10,18 2,12 12,12" fill="%23ffd700" stroke="%23000000" stroke-width="1" filter="url(%23glow)"/></svg>') 16 16, auto;
+}
+
+html, a, button, input, textarea, select, .project-link, .theme-toggle {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32"><defs><filter id="glow"><feDropShadow dx="0" dy="0" stdDeviation="2" flood-color="%23ffd700" flood-opacity="0.85"/></filter></defs><polygon points="16,2 20,12 30,12 22,18 24,28 16,22 8,28 10,18 2,12 12,12" fill="%23ffd700" stroke="%23000000" stroke-width="1" filter="url(%23glow)"/></svg>') 16 16, auto;
 }
 
 * {
@@ -966,13 +971,27 @@ section h2 {
     letter-spacing: 0.15em;
     color: #cc8800;
     text-transform: uppercase;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     padding-bottom: 8px;
     border-bottom: 2px solid #cc8800;
 }
 
+.section-theme h2 {
+    font-size: clamp(2.6rem, 4vw, 4.4rem);
+    font-weight: 900;
+    margin: 0 0 30px;
+    color: #1a1a1a;
+    line-height: 1.05;
+    text-shadow: 0 0 18px rgba(255, 216, 0, 0.12);
+}
+
+.section-theme h2 .highlight {
+    color: #cc8800;
+    font-style: italic;
+}
+
 .academic-section h2 {
-    font-size: clamp(2.2rem, 3.5vw, 3.2rem);
+    font-size: clamp(2.6rem, 4vw, 4.4rem);
     font-weight: 900;
     margin: 0 0 50px;
     color: #1a1a1a;
