@@ -43,8 +43,9 @@ nav {
     position: sticky;
     top: 0;
     z-index: 1000;
+    margin-bottom: 0.8rem;
     border-bottom: 2px solid #ffc700;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.18);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -55,29 +56,150 @@ nav .logo {
     color: #333;
 }
 
-nav ul {
+nav .theme-toggle {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    border-radius: 14px;
+    padding: 0.7rem 0.8rem;
+    font-size: 1rem;
+    cursor: pointer;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+nav .theme-toggle:hover {
+    transform: translateY(-1px);
+    background: #fff;
+}
+
+nav .nav-toggle {
+    display: none;
+    background: transparent;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    width: 58px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 4px;
+}
+
+nav .nav-toggle span {
+    display: block;
+    width: 4px;
+    height: 24px;
+    margin: 0;
+    background: #333;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+nav .nav-toggle.open span:nth-child(1) {
+    transform: translateX(6px) rotate(45deg);
+}
+
+nav .nav-toggle.open span:nth-child(2) {
+    opacity: 0;
+}
+
+nav .nav-toggle.open span:nth-child(3) {
+    transform: translateX(-6px) rotate(-45deg);
+}
+
+nav ul.nav-links {
     list-style: none;
     display: flex;
     margin: 0;
     padding: 0;
+    align-items: center;
+    gap: 18px;
 }
 
-nav ul li {
-    margin-left: 16px;
+nav ul.nav-links li {
+    margin-left: 0;
 }
 
-nav ul li a {
-    color: #333;
+nav ul.nav-links li a {
+    color: #111;
     font-weight: bold;
-    padding: 0.35rem 0.45rem;
-    border-radius: 5px;
-    transition: background 0.2s ease, color 0.2s ease;
+    padding: 0.5rem 0.75rem;
+    border-radius: 12px;
+    transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
-nav ul li a:hover,
-nav ul li a.active {
-    background: #fff;
-    color: #333;
+nav ul.nav-links li a:hover,
+nav ul.nav-links li a.active {
+    background: rgba(255, 255, 255, 0.92);
+    color: #111;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.08);
+}
+
+body.dark-mode nav ul.nav-links {
+    background: rgba(14, 14, 18, 0.95);
+}
+
+body.dark-mode nav ul.nav-links li a {
+    color: #f9edc7;
+    background: rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode nav ul.nav-links li a:hover,
+body.dark-mode nav ul.nav-links li a.active {
+    background: rgba(255, 215, 0, 0.92);
+    color: #111;
+}
+
+@media (max-width: 900px) {
+    nav {
+        padding: 1rem 1rem;
+        flex-wrap: wrap;
+        background: linear-gradient(180deg, rgba(255, 221, 66, 0.98), rgba(255, 205, 0, 0.98));
+        box-shadow: 0 16px 32px rgba(0, 0, 0, 0.18);
+        margin-bottom: 0.5rem;
+    }
+
+    nav .nav-toggle {
+        display: flex;
+    }
+
+    nav .theme-toggle {
+        order: 3;
+        margin-left: auto;
+    }
+
+    nav ul.nav-links {
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.6rem;
+        background: rgba(255, 255, 255, 0.95);
+        padding: 0.75rem 0.9rem;
+        border-radius: 22px;
+        border: 1px solid rgba(0, 0, 0, 0.08);
+        display: none;
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.12);
+    }
+
+    nav.nav-open ul.nav-links {
+        display: flex;
+    }
+
+    nav ul.nav-links li {
+        width: 100%;
+    }
+
+    nav ul.nav-links li a {
+        width: 100%;
+        text-align: center;
+        padding: 1rem 1rem;
+        background: rgba(255, 255, 255, 0.88);
+        color: #212121;
+        border-radius: 16px;
+        box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+    }
 }
 
 /* Hero */
@@ -1298,6 +1420,16 @@ body.dark-mode nav ul li a:hover,
 body.dark-mode nav ul li a.active {
     background: rgba(255, 215, 0, 0.9);
     color: #111;
+}
+
+body.dark-mode nav .theme-toggle {
+    background: rgba(255, 255, 255, 0.08);
+    color: #f9edc7;
+    border-color: rgba(255, 255, 255, 0.16);
+}
+
+body.dark-mode nav .nav-toggle span {
+    background: #f9edc7;
 }
 
 body.dark-mode a {

@@ -1,7 +1,9 @@
 // No dynamic background changes - keeping static yellow theme
 
 const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('nav ul li a');
+const navLinks = document.querySelectorAll('nav ul.nav-links li a');
+const navToggle = document.getElementById('nav-toggle');
+const nav = document.querySelector('nav');
 
 const animatedSections = new Set();
 
@@ -39,6 +41,23 @@ themeToggle.addEventListener('click', () => {
     const isDark = body.classList.contains('dark-mode');
     themeToggle.textContent = isDark ? '☀️' : '🌙';
     localStorage.setItem('theme', isDark ? 'dark' : 'light');
+});
+
+navToggle.addEventListener('click', () => {
+    const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+    navToggle.setAttribute('aria-expanded', String(!expanded));
+    navToggle.classList.toggle('open');
+    nav.classList.toggle('nav-open');
+});
+
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        if (nav.classList.contains('nav-open')) {
+            nav.classList.remove('nav-open');
+            navToggle.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
+    });
 });
 
 const typewriterDelay = 18;
